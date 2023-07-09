@@ -39,5 +39,11 @@ public class Account {
     public double getBalance() {
         return balance;
     }
+     /**
+     * Account operations
+     */
+    public List<Operation> getOperations() {
+        return operations;
+    }
    
 }
