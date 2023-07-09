@@ -13,6 +13,18 @@ public class Account {
         operations = new ArrayList<Operation>();
     }
 
+/**
+     * Deposit method.
+   
+     */
+    public void deposit(Double amount) {
+        if (amount == null || amount <= 0) {
+            throw new IllegalArgumentException("Invalid amount for deposit");
+        }
+        balance += amount;
+        operations.add(new Operation(OperationType.DEPOSIT, LocalDate.now(), amount, balance));
+    }
+
     
 
     public double getBalance() {
