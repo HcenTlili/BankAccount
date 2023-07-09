@@ -38,5 +38,30 @@ class AccountTest {
         assertThrows(IllegalArgumentException.class, () -> account.deposit((Double) null));
     }
 
+      @Test
+    void validWithdraw() {
+        account.deposit(100.0);
+        account.withdraw(50.0);
+        assertEquals(50.0, account.getBalance());
+    }
+
+    @Test
+    void invalidAmountWithdraw() {
+        assertThrows(IllegalArgumentException.class, () -> account.withdraw(0.0));
+        assertThrows(IllegalArgumentException.class, () -> account.withdraw(-50.0));
+        assertThrows(IllegalArgumentException.class, () -> account.withdraw(50.0));
+    }
+
+    @Test
+    void withdrawValueGreaterThanBalance() {
+        assertThrows(IllegalArgumentException.class, () -> account.withdraw(50.0));
+    }
+
+    @Test
+    void withdrawNull() {
+        assertThrows(IllegalArgumentException.class, () -> account.withdraw((Double) null));
+    }
+
+
    
 }
