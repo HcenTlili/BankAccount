@@ -25,7 +25,16 @@ public class Account {
         operations.add(new Operation(OperationType.DEPOSIT, LocalDate.now(), amount, balance));
     }
 
-    
+     /**
+     * Withdraw from the account
+     */
+    public void withdraw(Double amount) {
+        if (amount == null || amount <= 0 || amount > balance) {
+            throw new IllegalArgumentException("withdrawal invalid");
+        }
+        balance -= amount;
+        operations.add(new Operation(OperationType.WITHDRAWAL, LocalDate.now(), -amount, balance));
+    }
 
     public double getBalance() {
         return balance;
